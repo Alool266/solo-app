@@ -18,16 +18,13 @@ if (!base || base === '/') {
 const baseHref = `${base}/`;
 
 function patchHtml(content) {
-  const needs =
-    content.includes('src="/_expo/') ||
-    content.includes('href="/_expo/') ||
-    content.includes('href="/favicon');
-  if (!needs) return content;
-
   let s = content;
+  // Always add <base> for project Pages when Expo omitted it (CI often emits
+  // /repo/_expo/ URLs only and skips <base>, which broke our workflow verify step).
   if (!/<base\s/i.test(s) && /<head[^>]*>/i.test(s)) {
     s = s.replace(/<head([^>]*)>/i, `<head$1>\n    <base href="${baseHref}" />`);
   }
+  // Root-absolute assets (local/dev exports): resolve under <base>.
   s = s.replace(/src="\/_expo\//g, 'src="_expo/');
   s = s.replace(/href="\/_expo\//g, 'href="_expo/');
   s = s.replace(/href="\/favicon\.ico"/g, 'href="favicon.ico"');

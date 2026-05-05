@@ -64,7 +64,15 @@ jobs:
           grep -E '<base href=|src="' dist/index.html | head -c 800 || true
           echo
           if [[ "$EXPO_BASE_URL" != "/" ]]; then
-            grep -q '<base href=' dist/index.html || (echo "missing <base href> for subpath deploy" && exit 1)
+            if grep -q '<base href=' dist/index.html; then
+              echo "OK: <base href> present"
+            elif grep -qF "src=\"${EXPO_BASE_URL}/_expo/" dist/index.html; then
+              echo "OK: Expo prefixed script URL (no <base> needed for assets)"
+            else
+              echo "FAIL: expected <base href> or src=\"${EXPO_BASE_URL}/_expo/\""
+              grep -oE 'src="[^"]+"' dist/index.html | head -20 || true
+              exit 1
+            fi
           fi
 
       - name: Upload Pages artifact
