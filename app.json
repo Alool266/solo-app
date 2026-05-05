@@ -1,0 +1,52 @@
+{
+  "expo": {
+    "name": "Solo Rep",
+    "slug": "solo-app",
+    "scheme": "solorep",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#070b12"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.solorep.app"
+    },
+    "android": {
+      "package": "com.solorep.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#070b12"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/icon.png",
+      "name": "Solo Rep",
+      "shortName": "Solo Rep",
+      "lang": "en",
+      "scope": "/",
+      "themeColor": "#070b12",
+      "backgroundColor": "#070b12",
+      "display": "standalone",
+      "orientation": "portrait",
+      "startUrl": "/"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-localization",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow $(PRODUCT_NAME) to attach exercise photos from your library.",
+          "cameraPermission": "Allow $(PRODUCT_NAME) to take exercise photos."
+        }
+      ]
+    ]
+  }
+}
