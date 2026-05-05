@@ -8,6 +8,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "build:web": "expo export --platform web",
+    "build:web:pages": "expo export --platform web && node scripts/patch-web-base-path.js",
     "icons": "node scripts/write-assets.js",
     "postinstall": "node scripts/write-assets.js"
   },

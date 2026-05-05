@@ -52,8 +52,20 @@ jobs:
           EXPO_BASE_URL: ${{ steps.base.outputs.path }}
         run: |
           npx expo export --platform web
+          node scripts/patch-web-base-path.js
           touch dist/.nojekyll
           cp dist/index.html dist/404.html
+
+      - name: Verify HTML asset paths
+        env:
+          EXPO_BASE_URL: ${{ steps.base.outputs.path }}
+        run: |
+          test -f dist/index.html
+          grep -E '<base href=|src="' dist/index.html | head -c 800 || true
+          echo
+          if [[ "$EXPO_BASE_URL" != "/" ]]; then
+            grep -q '<base href=' dist/index.html || (echo "missing <base href> for subpath deploy" && exit 1)
+          fi
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
