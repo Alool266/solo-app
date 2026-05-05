@@ -17,7 +17,27 @@
     "programs": "Programs",
     "today": "Today",
     "workouts": "Workouts",
+    "insights": "Insights",
     "you": "You"
+  },
+  "stats": {
+    "kicker": "INSIGHTS",
+    "title": "History & trends",
+    "intro": "Volume adds up every logged set (weight × reps). PRs are new bests for each exercise (by total load on a set). Streak counts consecutive calendar days with at least one saved workout, ending on your last session day.",
+    "streakTitle": "Training streak",
+    "streakHint": "Days in a row with a logged workout (from your most recent session backward).",
+    "volumeTitle": "Volume per week",
+    "volumeHint": "Last 8 weeks · total kg lifted (all sets).",
+    "volumeUnit": "kg lifted",
+    "volumeUnitShort": "kg",
+    "prTitle": "PR timeline",
+    "prHint": "Personal records — when you beat your previous best set for an exercise.",
+    "prEmpty": "Log workouts with named or saved exercises to build a PR timeline.",
+    "unnamedExercise": "Exercise (unnamed)",
+    "prSetFormat": "{{weight}} kg × {{reps}}",
+    "historyTitle": "Recent sessions",
+    "historyHint": "Newest first — same list cap as your workout log.",
+    "historyEmpty": "No sessions yet."
   },
   "onboarding": {
     "badge": "SOLO REP",
